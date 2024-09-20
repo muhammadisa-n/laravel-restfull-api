@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ContactSeeder extends Seeder
+class SearchContactSeeder extends Seeder
 {
   /**
    * Run the database seeds.
@@ -15,12 +15,14 @@ class ContactSeeder extends Seeder
   public function run(): void
   {
     $user = User::where('username', 'test')->first();
-    Contact::create([
-      'first_name' => 'test',
-      'last_name' => 'test',
-      'email' => 'test@gmail.com',
-      'phone' => '111111111111',
-      'user_id' => $user->id,
-    ]);
+    for ($i = 0; $i < 20; $i++) {
+      Contact::create([
+        'first_name' => 'first' . $i,
+        'last_name' => 'last' . $i,
+        'email' => 'test' . $i . '@gmail.com',
+        'phone' => '11111' . $i,
+        'user_id' => $user->id
+      ]);
+    }
   }
 }
