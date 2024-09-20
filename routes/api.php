@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/users', [UserController::class, 'register']);
 Route::post('/users/login', [UserController::class, 'login']);
+Route::get('/contacts', [ContactController::class, 'getAll']);
 Route::middleware(ApiAuthMiddleware::class)->group(function () {
   Route::get('/users/current', [UserController::class, 'get']);
   Route::patch('/users/current', [UserController::class, 'update']);
@@ -26,7 +27,7 @@ Route::middleware(ApiAuthMiddleware::class)->group(function () {
 
   // contacts
   Route::post('/contacts', [ContactController::class, 'create']);
-  Route::get('/contacts', [ContactController::class, 'search']);
+  Route::get('/contacts/search', [ContactController::class, 'search']);
   Route::get('/contacts/{id}', [ContactController::class, 'get'])->where('id', '[0-9]+');
   Route::put('/contacts/{id}', [ContactController::class, 'update'])->where('id', '[0-9]+');
   Route::delete('/contacts/{id}', [ContactController::class, 'remove'])->where('id', '[0-9]+');

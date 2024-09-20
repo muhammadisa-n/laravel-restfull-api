@@ -15,6 +15,37 @@ use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
+  public function getAll(Request $request): ContactCollection
+  {
+
+    $page = $request->input('page', 1);
+    $size = $request->input('size', 10);
+
+    $contacts = Contact::query();
+    $contacts = $contacts->where(function (Builder $builder) use ($request) {
+      $name = $request->input('name');
+      if ($name) {
+        $builder->where(function (Builder $builder) use ($name) {
+          $builder->orWhere('first_name', 'like', '%' . $name . '%');
+          $builder->orWhere('last_name', 'like', '%' . $name . '%');
+        });
+      }
+
+      $email = $request->input('email');
+      if ($email) {
+        $builder->where('email', 'like', '%' . $email . '%');
+      }
+
+      $phone = $request->input('phone');
+      if ($phone) {
+        $builder->where('phone', 'like', '%' . $phone . '%');
+      }
+    });
+
+    $contacts = $contacts->paginate(perPage: $size, page: $page);
+
+    return new ContactCollection($contacts);
+  }
   public function create(CreateContactRequest $request): JsonResponse
   {
     $data = $request->validated();
