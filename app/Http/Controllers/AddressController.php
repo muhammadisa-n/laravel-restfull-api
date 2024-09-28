@@ -43,6 +43,7 @@ class AddressController extends Controller
         $data = $request->validated();
         $address = new Address($data);
         $address->contact_id = $contact->id;
+        $address->save();
         return (new AddressResource($address))->response()->setStatusCode(201);
     }
 

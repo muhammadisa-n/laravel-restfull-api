@@ -1,4 +1,5 @@
-### Register Use Api
+### USER API
+### Register User Api
 POST http://127.0.0.1:8000/api/users
 Content-Type: application/json
 Accept: application/json
@@ -24,5 +25,105 @@ Accept: application/json
 GET  http://127.0.0.1:8000/api/users/current
 Content-Type: application/json
 Accept: application/json
-Authorization: ac056e6a-8526-423a-a1d7-8b0cf418835d
+Authorization: a443d4de-9b8e-40c4-8bec-1f32400093d9
 
+### Update Current User Api
+PATCH  http://127.0.0.1:8000/api/users/current
+Content-Type: application/json
+Accept: application/json
+Authorization: a443d4de-9b8e-40c4-8bec-1f32400093d9
+
+{
+    "name": "Muhammad Isa"
+}
+### Logoout User Api
+DELETE   http://127.0.0.1:8000/api/users/logout
+Content-Type: application/json
+Accept: application/json
+Authorization: a443d4de-9b8e-40c4-8bec-1f32400093d9
+
+### CONTACT API
+### Create Contact Api
+POST http://127.0.0.1:8000/api/contacts
+Content-Type: application/json
+Accept: application/json
+Authorization: a443d4de-9b8e-40c4-8bec-1f32400093d9
+
+{
+    "first_name": "Muhammad Isa",
+    "last_name": "Nuruddin",
+    "email": "muhamamdisa226@gmail.com",
+    "phone": "087833380742"
+}
+
+
+### Get Contact Api #1012
+GET  http://127.0.0.1:8000/api/contacts/1012
+Accept: application/json
+Authorization: a443d4de-9b8e-40c4-8bec-1f32400093d9
+
+### Update Contact Api #1012
+PUT http://127.0.0.1:8000/api/contacts/1012
+Content-Type: application/json
+Accept: application/json
+Authorization: a443d4de-9b8e-40c4-8bec-1f32400093d9
+
+{
+    "first_name": "Muhammad",
+    "last_name": "Isa"
+}
+
+### Delete Contact Api #1012
+DELETE http://127.0.0.1:8000/api/contacts/1012
+Accept: application/json
+Authorization: a443d4de-9b8e-40c4-8bec-1f32400093d9
+
+
+### Search Contact Api
+GET http://127.0.0.1:8000/api/contacts?name=Muhammad Isa
+Content-Type: application/json
+Accept: application/json
+Authorization: a443d4de-9b8e-40c4-8bec-1f32400093d9
+
+### Create Address Contact Api
+POST http://127.0.0.1:8000/api/contacts/1013/addresses
+Content-Type: application/json
+Accept: application/json
+Authorization: a443d4de-9b8e-40c4-8bec-1f32400093d9
+
+{
+    "street": "jalan belum ada 2",
+    "city": "Tegal",
+    "province": "jawa tengah",
+    "country": "Indonesia",
+    "postal_code": "52194"
+}
+
+### Get Address Contact Api #99
+GET http://127.0.0.1:8000/api/contacts/1013/addresses/99
+Content-Type: application/json
+Accept: application/json
+Authorization: a443d4de-9b8e-40c4-8bec-1f32400093d9
+
+### UPDATE Address Contact Api
+PUT http://127.0.0.1:8000/api/contacts/1013/addresses/99
+Content-Type: application/json
+Accept: application/json
+Authorization: a443d4de-9b8e-40c4-8bec-1f32400093d9
+
+{
+    "street": "jalan belum ada",
+    "country": "Indonesia"
+}
+
+### DELETE Address Contact Api
+DELETE http://127.0.0.1:8000/api/contacts/1013/addresses/99
+Content-Type: application/json
+Accept: application/json
+Authorization: a443d4de-9b8e-40c4-8bec-1f32400093d9
+
+### List Address Contact Api
+GET http://127.0.0.1:8000/api/contacts/1013/addresses
+Content-Type: application/json
+Accept: application/json
+Authorization: a443d4de-9b8e-40c4-8bec-1f32400093d9
