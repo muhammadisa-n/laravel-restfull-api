@@ -1,0 +1,28 @@
+### Register Use Api
+POST http://127.0.0.1:8000/api/users
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username": "muhammadisa",
+    "password": "rahasia",
+    "name": "Muhammad Isa Nuruddin"
+}
+
+
+### Login User Api
+POST http://127.0.0.1:8000/api/users/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username": "muhammadisa",
+    "password": "rahasia"
+}
+
+### Get Current User Api
+GET  http://127.0.0.1:8000/api/users/current
+Content-Type: application/json
+Accept: application/json
+Authorization: ac056e6a-8526-423a-a1d7-8b0cf418835d
+
